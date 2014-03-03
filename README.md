@@ -1,2 +1,2 @@
-Thin
-====
+ThinTorch
+=========
