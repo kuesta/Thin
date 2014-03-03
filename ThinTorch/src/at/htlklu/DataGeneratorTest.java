@@ -36,40 +36,27 @@ public class DataGeneratorTest implements RefVars {
 		
 		dg.getData();
 		int error=dg.getErrorMaskNumber();
+		System.out.println(error);
+		
 		if(error==(error&ERRORMASK_NO_ERROR)){
 			System.out.println("Success");
 		}
 		if(ERRORMASK_NOT_VALID_VE_ID==(error&ERRORMASK_NOT_VALID_VE_ID)){
-			System.out.println("Error: valid ve id");
+			System.out.println("Error: invalid ve id");
+		}
+		if(ERRORMASK_NOT_VALID_LED_ID==(error&ERRORMASK_NOT_VALID_LED_ID)){
+			System.out.println("Error: invalid Led id");
+		}
+		if(ERRORMASK_NOT_VALID_RED_INPUT==(error&ERRORMASK_NOT_VALID_RED_INPUT)){
+			System.out.println("Error: invalid red input");
+		}
+		if(ERRORMASK_NOT_VALID_GREEN_INPUT==(error&ERRORMASK_NOT_VALID_GREEN_INPUT)){
+			System.out.println("Error: invalid green input");
+		}
+		if(ERRORMASK_NOT_VALID_BLUE_INPUT==(error&ERRORMASK_NOT_VALID_BLUE_INPUT)){
+			System.out.println("Error: invalid blue input");
 		}
 		
-		System.out.println(Integer.toBinaryString(ERRORMASK_NOT_VALID_VE_ID));
-		
-	}
-
-	@Test
-	public void testSetVeId() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetLedId() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetRed() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetGreen() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetBlue() {
-		fail("Not yet implemented");
 	}
 
 }
