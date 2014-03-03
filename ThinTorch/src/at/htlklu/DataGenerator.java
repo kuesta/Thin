@@ -9,11 +9,11 @@ public class DataGenerator {
 	public static int ERRORMASK_NOT_VALID_GREEN_INPUT = 8;
 	public static int ERRORMASK_NOT_VALID_BLUE_INPUT = 16;
 
-	int veId;
-	int ledId;
-	int red;
-	int green;
-	int blue;
+	int veId;	// 4Bit
+	int ledId;	// 4Bit
+	int red;	// 7Bit
+	int green;	// 7Bit
+	int blue;   // 7Bit
 
 	int errorMask;
 
@@ -28,17 +28,14 @@ public class DataGenerator {
 
 	private int generateData() {
 		errorMask = 0;
-		if (veId <= 0 || veId > 5) {
+		if (veId < 1 || veId > 5) {
 			errorMask += 1;
-			System.out.println("invalid mod id");
 		}
-		if (ledId <= 0 || ledId > 5) {
+		if (ledId < 1 || ledId > 5) {
 			errorMask += 2;
-			System.out.println("invalid led id");
 		}
 		if (red < 0 || red > 128) {
 			errorMask += 4;
-			System.out.println("invalid red");
 		}
 		if (green < 0 || green > 128) {
 			errorMask += 8;
