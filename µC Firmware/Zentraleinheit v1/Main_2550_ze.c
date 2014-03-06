@@ -37,10 +37,6 @@ void rtUsb(){
     if (usb_cdc_kbhit()){											// Zeichen empfangen?{
         data=get_int_usb();
         cmd.veId=(data&0x1E000000)>>25;
-      /*cmd.ledId=(data&0x1E00000)>>21;
-        cmd.red=(data&0x1FC000)>>14;
-        cmd.green=(data&0x3F80)>>7;
-        cmd.green=(data&0x7F);*/
         cmd.data=data&0x1FFFFFF;
         dataReady=true;
     }
