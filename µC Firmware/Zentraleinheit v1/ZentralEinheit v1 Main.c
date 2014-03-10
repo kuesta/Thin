@@ -39,6 +39,7 @@ void rtUsb(){
         cmd.veId=(data&0x1E000000)>>25;
         cmd.data=data&0x1FFFFFF;
         dataReady=true;
+output_b(data);
     }
 }
 void writeI2cData(int address, int i2cData){
@@ -61,6 +62,7 @@ void main() {
         rtUsb();                      // Usb-Verbindung
         if(dataReady){
             writeI2cData(devices[cmd.veId], cmd.data);
+            output_toggle(PIN_B0);
         }
     }
 }
