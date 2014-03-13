@@ -29,17 +29,29 @@ struct cmd{
     data;
 } cmd;
 int8    devices[5] = {0x10, 0x11, 0x12, 0x13, 0x14};
-int  	data=0x00;
+char    res='';
+int8    itera=0;
+char  	data[6]={'m','l','v','r','g','b'};
 boolean dataReady=false;
 
 // Aus/Eingabe über USB
 void rtUsb(){
-    if (usb_cdc_kbhit()){											// Zeichen empfangen?{
-        data=get_int_usb();
-        cmd.veId=(data&0x1E000000)>>25;
-        cmd.data=data&0x1FFFFFF;
-        dataReady=true;
-output_b(data);
+    if (usb_cdc_kbhit()){		// Zeichen empfangen?{
+        res=usb_cdc_getc();
+        switch(res){
+            case 'a':
+                output_toggle(pin_b7);
+                break;
+            case 'b':
+                output_toggle(pin_6);
+                break;
+            case 'c':
+                output_toggle(pin_5);
+                break;
+            case 'd':
+                output_toggle(pin_4);
+                break;
+        }
     }
 }
 void writeI2cData(int address, int i2cData){
